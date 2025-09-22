@@ -1,12 +1,14 @@
 import { makeAutoObservable, observable } from "mobx";
-import { TaskProps } from "../models";
+import { Roles, TaskProps } from "../models";
 
 class TaskStore {
   tasks: TaskProps[] = [];
+  role: Roles = 'USER';
 
   constructor() {
     makeAutoObservable(this, {
-      tasks: observable
+      tasks: observable,
+      // role: observable
     });
   }
 
@@ -20,6 +22,14 @@ class TaskStore {
 
   addTask(task: TaskProps) {
     this.tasks.push(task);
+  }
+
+  setRole(role: Roles) {
+    this.role = role;
+  }
+
+  getRole() {
+    return this.role;
   }
 }
 

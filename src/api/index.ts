@@ -17,11 +17,11 @@ export const getTasks = async (): Promise<TaskProps[]> => {
 export const createTask = async (task: TaskProps): Promise<TaskProps[]> => {
     return axios({
         method: 'put',
-        url: 'http://localhost:3001/newTast',
+        url: 'http://localhost:3001/newTask',
         data: task
       })
         .then(function (response) {
-            return response.data as TaskProps[];
+            return response.data.data as TaskProps[];
         }).catch(function (error) {
             console.log(error);
             return [] as TaskProps[];
